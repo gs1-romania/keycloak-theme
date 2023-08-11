@@ -42,7 +42,7 @@ public class ComtecAccountProvider extends FreeMarkerAccountProvider {
 
 	public ComtecAccountProvider(KeycloakSession session, FreeMarkerUtil freeMarker) {
 		super(session, freeMarker);
-		logger.debug("ComtecAccountProvider - start");
+		logger.debug("ComtecAccountProvider - startt");
 	}
 
 	@Override
