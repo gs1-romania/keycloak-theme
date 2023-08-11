@@ -1,0 +1,1 @@
+package ro.gs1.provider;

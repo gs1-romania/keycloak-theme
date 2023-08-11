@@ -1,0 +1,6 @@
+org/com/domainextension/spi/ExampleService.class
+org/com/provider/MyThemeSelectorProviderFactory.class
+org/com/provider/App.class
+org/com/provider/MyThemeSelectorProvider.class
+org/com/domainextension/spi/ExampleSpi.class
+org/com/domainextension/spi/ExampleServiceProviderFactory.class
