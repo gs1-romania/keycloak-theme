@@ -4,6 +4,9 @@ import org.keycloak.provider.Provider;
 import org.keycloak.provider.ProviderFactory;
 import org.keycloak.provider.Spi;
 
+import ro.gs1.provider.ComtecAccountProvider;
+import ro.gs1.provider.ComtecAccountProviderFactory;
+
 public class ExampleSpi implements Spi{
 
 	@Override
@@ -21,13 +24,14 @@ public class ExampleSpi implements Spi{
 	@Override
 	public Class<? extends Provider> getProviderClass() {
 		// TODO Auto-generated method stub
-		return ExampleService.class;
+		return ComtecAccountProvider.class;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public Class<? extends ProviderFactory<ExampleService>> getProviderFactoryClass() {
+	public Class<? extends ProviderFactory> getProviderFactoryClass() {
 		// TODO Auto-generated method stub
-		return ExampleServiceProviderFactory.class;
+		return ComtecAccountProviderFactory.class;
 	}
 
 }

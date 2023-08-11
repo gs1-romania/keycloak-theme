@@ -29,10 +29,10 @@ import org.keycloak.forms.account.freemarker.model.SessionsBean;
 import org.keycloak.forms.account.freemarker.model.TotpBean;
 import org.keycloak.forms.account.freemarker.model.UrlBean;
 import org.keycloak.models.KeycloakSession;
-import org.keycloak.theme.FreeMarkerUtil;
 import org.keycloak.theme.Theme;
 import org.keycloak.theme.beans.AdvancedMessageFormatterMethod;
 import org.keycloak.theme.beans.LocaleBean;
+import org.keycloak.theme.freemarker.FreeMarkerProvider;
 
 public class ComtecAccountProvider extends FreeMarkerAccountProvider {
 
@@ -40,8 +40,9 @@ public class ComtecAccountProvider extends FreeMarkerAccountProvider {
 
 	private boolean authorizationSupported;
 
-	public ComtecAccountProvider(KeycloakSession session, FreeMarkerUtil freeMarker) {
-		super(session, freeMarker);
+	public ComtecAccountProvider(KeycloakSession session) {
+		super(session);
+		this.freeMarker = session.getProvider(FreeMarkerProvider.class);
 		logger.debug("ComtecAccountProvider - startt");
 	}
 
@@ -112,12 +113,12 @@ public class ComtecAccountProvider extends FreeMarkerAccountProvider {
 			if (!realm.isUserManagedAccessAllowed()) {
 				return Response.status(Status.FORBIDDEN).build();
 			}
-			attributes.put("authorization", new AuthorizationBean(session, user, uriInfo));
+			attributes.put("authorization", new AuthorizationBean(session, realm, user, uriInfo));
 		case RESOURCE_DETAIL:
 			if (!realm.isUserManagedAccessAllowed()) {
 				return Response.status(Status.FORBIDDEN).build();
 			}
-			attributes.put("authorization", new AuthorizationBean(session, user, uriInfo));
+			attributes.put("authorization", new AuthorizationBean(session, realm, user, uriInfo));
 		}
 		logger.debug("createResponse() - end");
 		return processTemplate(theme, page, attributes, locale);
