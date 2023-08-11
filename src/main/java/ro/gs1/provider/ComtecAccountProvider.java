@@ -48,7 +48,7 @@ public class ComtecAccountProvider extends FreeMarkerAccountProvider {
 
 	@Override
 	public Response createResponse(AccountPages page) {
-		logger.debug("createResponse() - start");
+		logger.info("createResponse() - start");
 		Map<String, Object> attributes = new HashMap<>();
 		if (this.attributes != null) {
 			attributes.putAll(this.attributes);
@@ -120,19 +120,19 @@ public class ComtecAccountProvider extends FreeMarkerAccountProvider {
 			}
 			attributes.put("authorization", new AuthorizationBean(session, realm, user, uriInfo));
 		}
-		logger.debug("createResponse() - end");
+		logger.info("createResponse() - end");
 		return processTemplate(theme, page, attributes, locale);
 	}
 
 	@Override
 	public AccountProvider setFeatures(boolean identityProviderEnabled, boolean eventsEnabled,
 			boolean passwordUpdateSupported, boolean authorizationSupported) {
-		logger.debug("setFeatures() - start");
+		logger.info("setFeatures() - start");
 		this.identityProviderEnabled = identityProviderEnabled;
 		this.eventsEnabled = eventsEnabled;
 		this.passwordUpdateSupported = passwordUpdateSupported;
 		this.authorizationSupported = authorizationSupported;
-		logger.debug("setFeatures() - end");
+		logger.info("setFeatures() - end");
 		return this;
 	}
 }

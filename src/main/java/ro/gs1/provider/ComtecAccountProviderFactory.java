@@ -23,31 +23,36 @@ public class ComtecAccountProviderFactory implements AccountProviderFactory, Ser
 
 	@Override
 	public AccountProvider create(KeycloakSession session) {
-		logger.info("Am suprascris providerul pentru consola.");
+		logger.info("create() - Am suprascris providerul pentru consola.");
 		return new ComtecAccountProvider(session);
 	}
 
 	@Override
 	public void init(Config.Scope config) {
+		logger.info("init()");
 //      freeMarker = new FreeMarkerUtil();
 	}
 
 	@Override
 	public void postInit(KeycloakSessionFactory factory) {
+		logger.info("postInit()");
 	}
 
 	@Override
 	public void close() {
+		logger.info("close()");
 //      freeMarker = null;
 	}
 
 	@Override
 	public String getId() {
+		logger.info("getId()");
 		return "comtec";
 	}
 
 	@Override
 	public Map<String, String> getOperationalInfo() {
+		logger.info("getOperationalInfo()");
 		Map<String, String> retval = new HashMap<>();
 		retval.put("provider", "ComtecAccountProvider");
 		return retval;
